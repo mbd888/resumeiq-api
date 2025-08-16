@@ -118,15 +118,7 @@ async def api_info():
     }
 
 
-# Global exception handler# COMMENT THESE LINES FOR NOW:
-    # if not check_database_connection():
-    #     raise RuntimeError("Database connection failed")
-    # init_db()
-    
-    # ADD THIS INSTEAD:
-    logger.warning("Database check skipped - running without DB for development")
-    
-    logger.info("Database connected successfully")
+# Global exception handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
     """
