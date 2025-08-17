@@ -1,6 +1,5 @@
 """
 Main FastAPI application setup and configuration.
-This is where everything comes together.
 """
 
 from contextlib import asynccontextmanager
@@ -135,10 +134,10 @@ async def global_exception_handler(request, exc):
 
 
 # Register routers (will be added in next few days)
-# from app.auth.router import router as auth_router
+from app.auth.router import router as auth_router
 # from app.resumes.router import router as resume_router
 # from app.jobs.router import router as job_router
 
-# app.include_router(auth_router, prefix="/api/v1/auth", tags=["Authentication"])
+app.include_router(auth_router, prefix="/api/v1/auth", tags=["Authentication"])
 # app.include_router(resume_router, prefix="/api/v1/resumes", tags=["Resumes"])
 # app.include_router(job_router, prefix="/api/v1/jobs", tags=["Jobs"])
