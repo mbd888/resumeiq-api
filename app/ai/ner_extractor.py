@@ -56,8 +56,13 @@ class NERExtractor(BaseModel):
             }
             
             for entity in entities:
+
                 entity_type = entity['entity_group']
                 entity_text = entity['word'].strip()
+
+                # Skip BERT subword tokens
+                if entity_text.startswith('##'):
+                    continue
                 
                 if entity_type == "PER":
                     organized["persons"].append(entity_text)
