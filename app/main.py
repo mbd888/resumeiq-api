@@ -141,3 +141,6 @@ from app.auth.router import router as auth_router
 app.include_router(auth_router, prefix="/api/v1/auth", tags=["Authentication"])
 # app.include_router(resume_router, prefix="/api/v1/resumes", tags=["Resumes"])
 # app.include_router(job_router, prefix="/api/v1/jobs", tags=["Jobs"])
+
+from app.resumes.ai_router import router as ai_router
+app.include_router(ai_router, prefix="/api/v1/ai", tags=["AI Analysis"])
