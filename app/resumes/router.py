@@ -13,6 +13,7 @@ from app.models.user import User
 from app.resumes.service import ResumeService
 from app.resumes import schemas
 from app.config import settings
+from app.models.analysis import Analysis
 
 router = APIRouter()
 
@@ -101,3 +102,19 @@ async def download_resume(
         filename=resume.filename,
         media_type='application/octet-stream'
     )
+
+@router.get("/{resume_id}/analysis")
+async def get_resume_analysis(
+    resume_id: UUID,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    """Get analysis for a resume"""
+    analysis = db.query(Analysis).filter(
+        Analysis.resume_id == resume_id
+    ).first()
+    
+    if not analysis:
+        raise HTTPException(status_code=404, detail="Analysis not found")
+    
+    return analysis
