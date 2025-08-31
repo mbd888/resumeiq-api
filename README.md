@@ -27,26 +27,26 @@ An intelligent resume analysis and job matching system that leverages cutting-ed
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                   Frontend (Next.js)                     │
-│                   - TypeScript                           │
-│                   - Tailwind CSS                         │
-│                   - React Hook Form                      │
+│                   Frontend (Next.js)                    │
+│                   - TypeScript                          │
+│                   - Tailwind CSS                        │
+│                   - React Hook Form                     │
 └─────────────────────────┬───────────────────────────────┘
                           │ HTTP/REST
 ┌─────────────────────────▼───────────────────────────────┐
-│                   Backend (FastAPI)                      │
-│                   - JWT Authentication                   │
-│                   - Role-based Access                    │
-│                   - File Upload Handling                 │
-└──────┬──────────────────┬──────────────────┬───────────┘
-       │                  │                  │
-┌──────▼──────┐  ┌───────▼──────┐  ┌────────▼────────┐
-│ PostgreSQL  │  │ HuggingFace  │  │  File Storage   │
-│  Database   │  │   Models     │  │   (uploads/)    │
-└─────────────┘  └──────────────┘  └─────────────────┘
+│                   Backend (FastAPI)                     │
+│                   - JWT Authentication                  │
+│                   - Role-based Access                   │
+│                   - File Upload Handling                │
+└────--──┬──────────────────┬──────────────────┬─────-────┘
+         │                  │                  │
+  ┌──────▼──────┐   ┌───────▼──────┐  ┌────────▼────────┐
+  │ PostgreSQL  │   │ HuggingFace  │  │  File Storage   │
+  │  Database   │   │   Models     │  │   (uploads/)    │
+  └─────────────┘   └──────────────┘  └─────────────────┘
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 - **Framework**: FastAPI (Python 3.10+)
@@ -69,7 +69,7 @@ An intelligent resume analysis and job matching system that leverages cutting-ed
 - **Sentence-BERT**: `sentence-transformers/all-MiniLM-L6-v2` for semantic similarity
 - **Custom Models**: Skills extraction and experience classification
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.10+
@@ -147,7 +147,7 @@ npm run dev
 
 Frontend will be available at http://localhost:3000
 
-## 📝 API Documentation
+## API Documentation
 
 Once the backend is running, visit:
 - **Interactive API Docs**: http://localhost:8000/docs
@@ -176,7 +176,7 @@ Once the backend is running, visit:
 - `POST /api/v1/ai/analyze-text` - Analyze text directly
 - `GET /api/v1/ai/skills/extract` - Extract skills from text
 
-## 🎮 Usage Guide
+## Usage Guide
 
 ### For Job Seekers
 1. Register an account as "job_seeker"
@@ -192,7 +192,7 @@ Once the backend is running, visit:
 4. Use AI matching to find best candidates
 5. View skill gap analysis for each match
 
-## 🧪 Testing
+## Testing
 
 ### Quick Test Flow
 1. Register a job seeker account
@@ -216,7 +216,7 @@ Skills: Python, JavaScript, React, PostgreSQL, AWS, Docker
 Education: BS Computer Science - Stanford University
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 resumeiq-api/
@@ -249,7 +249,7 @@ resumeiq-frontend/
 └── package.json            # Node dependencies
 ```
 
-## 🔒 Environment Variables
+## Environment Variables
 
 ### Backend (.env)
 ```env
@@ -264,7 +264,7 @@ MOCK_MODE=false  # Set to true to use mock AI models
 NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Using Docker (Recommended)
 ```bash
