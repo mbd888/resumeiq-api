@@ -55,19 +55,19 @@ export default function Home() {
 
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-3">📄 Smart Parsing</h3>
+            <h3 className="text-xl text-gray-700 font-semibold mb-3">📄 Smart Parsing</h3>
             <p className="text-gray-600">
               Extract skills, experience, and contact info from PDFs automatically
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-3">🎯 Job Matching</h3>
+            <h3 className="text-xl text-gray-700 font-semibold mb-3">🎯 Job Matching</h3>
             <p className="text-gray-600">
               AI-powered matching with skill gap analysis and scoring
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-3">⚡ Fast Analysis</h3>
+            <h3 className="text-xl text-gray-700 font-semibold mb-3">⚡ Fast Analysis</h3>
             <p className="text-gray-600">
               Process hundreds of resumes in seconds with transformer models
             </p>

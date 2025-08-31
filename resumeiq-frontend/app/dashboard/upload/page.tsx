@@ -67,7 +67,7 @@ export default function UploadResume() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-3xl mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-8">Upload Resume</h1>
+        <h1 className="text-3xl text-gray-700 font-bold mb-8">Upload Resume</h1>
 
         <div className="bg-white rounded-lg shadow p-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -101,12 +101,12 @@ export default function UploadResume() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Position Applied For (Optional)
+                Position Applying For (Optional)
               </label>
               <input
                 {...register('position_applied')}
                 type="text"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 text-gray-700 rounded-md"
                 placeholder="e.g., Senior Software Engineer"
               />
             </div>

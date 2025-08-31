@@ -6,7 +6,7 @@ import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { auth, User } from '@/lib/auth';
 import api from '@/lib/api';
-import { Upload, FileText, Briefcase, LogOut, BarChart } from 'lucide-react';
+import { Upload, FileText, BriefcaseBusiness, LogOut, BarChart } from 'lucide-react';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -93,7 +93,7 @@ export default function Dashboard() {
               href="/dashboard/jobs/create"
               className="bg-white p-6 rounded-lg shadow hover:shadow-md transition flex items-center"
             >
-              <Briefcase className="w-8 h-8 text-indigo-600 mr-4" />
+              <BriefcaseBusiness className="w-8 h-8 text-indigo-600 mr-4" />
               <div>
                 <h3 className="font-semibold">Post Job</h3>
                 <p className="text-sm text-gray-600">Create job listing</p>
@@ -105,10 +105,21 @@ export default function Dashboard() {
             href="/dashboard/jobs"
             className="bg-white p-6 rounded-lg shadow hover:shadow-md transition flex items-center"
           >
+            <BriefcaseBusiness className="w-8 h-8 text-indigo-600 mr-4" />
+            <div>
+              <h3 className="font-semibold">Job Tracker</h3>
+              <p className="text-sm text-gray-600">[check what you've applied to]</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/dashboard/analysis"
+            className="bg-white p-6 rounded-lg shadow hover:shadow-md transition flex items-center"
+          >
             <BarChart className="w-8 h-8 text-indigo-600 mr-4" />
             <div>
-              <h3 className="font-semibold">View Jobs</h3>
-              <p className="text-sm text-gray-600">Browse opportunities</p>
+              <h3 className="font-semibold">Analysis</h3>
+              <p className="text-sm text-gray-600">[track your applications]</p>
             </div>
           </Link>
         </div>
