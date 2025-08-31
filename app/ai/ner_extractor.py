@@ -105,8 +105,13 @@ class NERExtractor(BaseModel):
             contact["email"] = emails[0]
         
         # Phone
-        phone_pattern = r'[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,5}[-\s\.]?[0-9]{1,5}'
-        phones = re.findall(phone_pattern, text)
+        phone_pattern = r"""
+            (?:\+?\d{1,3}[\s.-]?)?              # optional country code
+            (?:\(\d{2,4}\)|\d{2,4})[\s.-]?      # area code, either (123) or 123
+            \d{3,4}[\s.-]?\d{3,4}               # local number
+        """
+
+        phones = re.findall(phone_pattern, text, re.VERBOSE)
         if phones:
             contact["phone"] = phones[0]
         
