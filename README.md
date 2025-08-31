@@ -23,7 +23,7 @@ An intelligent resume analysis and job matching system that leverages cutting-ed
 - **RESTful API**: Full CRUD operations for resumes, jobs, and user management
 - **Modern Frontend**: Responsive Next.js interface with TypeScript and Tailwind CSS
 
-## 📊 Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
