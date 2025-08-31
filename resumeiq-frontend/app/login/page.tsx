@@ -39,7 +39,7 @@ export default function Login() {
             <input
               {...register('username', { required: 'Username is required' })}
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md"
             />
             {errors.username && (
               <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>

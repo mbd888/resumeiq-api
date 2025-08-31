@@ -39,7 +39,7 @@ export default function Register() {
             <input
               {...register('full_name', { required: 'Full name is required' })}
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md"
             />
             {errors.full_name && (
               <p className="mt-1 text-sm text-red-600">{errors.full_name.message}</p>
@@ -51,7 +51,7 @@ export default function Register() {
             <input
               {...register('email', { required: 'Email is required' })}
               type="email"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md"
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -63,7 +63,7 @@ export default function Register() {
             <input
               {...register('username', { required: 'Username is required' })}
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md"
             />
             {errors.username && (
               <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
@@ -75,7 +75,7 @@ export default function Register() {
             <input
               {...register('password', { required: 'Password is required', minLength: 8 })}
               type="password"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md"
             />
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
