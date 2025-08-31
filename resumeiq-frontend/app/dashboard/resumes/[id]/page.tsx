@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import api from '@/lib/api';
-import { FileText, Mail, Phone, Briefcase, Award, Target, ArrowLeft } from 'lucide-react';
+import { FileText, Mail, Phone, Briefcase, Award, Target, ArrowLeft, Trash2} from 'lucide-react';
 import Link from 'next/link';
 
 export default function ResumeAnalysis() {
@@ -35,6 +35,20 @@ export default function ResumeAnalysis() {
     }
   };
 
+  const handleDelete = async () => {
+    if (!confirm("Are you sure you want to delete this resume?")) return;
+
+    try {
+      await api.delete(`/resumes/${params.id}`);
+      
+      // Redirect back to dashboard after deletion
+      window.location.href = "/dashboard";
+    } catch (err: any) {
+      console.error(err);
+      alert(err.response?.data?.detail || "Error deleting resume");
+    }
+  };
+
   if (loading) return <div>Loading...</div>;
   if (!resume) return <div>Resume not found</div>;
 
@@ -42,11 +56,11 @@ export default function ResumeAnalysis() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4">
         <Link 
-            href="/dashboard" 
-            className="flex items-center text-indigo-600 hover:text-indigo-800 mb-6"
-            >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Dashboard
+          href="/dashboard" 
+          className="flex items-center text-indigo-600 hover:text-indigo-800 mb-6"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back to Dashboard
         </Link>
         <h1 className="text-3xl font-bold mb-8 text-gray-900">Resume Analysis</h1>
 
@@ -58,11 +72,11 @@ export default function ResumeAnalysis() {
           </div>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <h2 className="text-gray-600">Status: {resume.status}</h2>
+              <h2 className="text-gray-600">Status: {'Completed'}</h2>
             </div>
             <div>
               <h2 className="text-gray-600">Uploaded: {' '}
-              {new Date(resume.uploaded_at).toLocaleDateString()}
+                {new Date(resume.uploaded_at).toLocaleDateString()}
               </h2>
             </div>
           </div>
@@ -133,6 +147,16 @@ export default function ResumeAnalysis() {
                    analysis.ats_score >= 60 ? 'Good' : 'Needs Improvement'}
                 </div>
               </div>
+            </div>
+
+            <div className="flex justify-between items-center p-7">
+              <button
+                onClick={handleDelete}
+                className="flex items-center px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200"
+              >
+                <Trash2 className="w-4 h-4 mr-1" />
+                Delete
+              </button>
             </div>
           </>
         )}

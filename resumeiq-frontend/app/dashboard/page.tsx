@@ -58,7 +58,7 @@ export default function Dashboard() {
             <h1 className="text-2xl font-bold text-indigo-600">ResumeIQ</h1>
             <div className="flex items-center space-x-4">
               <span className="text-gray-700">
-                {user?.full_name} ({user?.user_type})
+                {user?.full_name} ({user?.user_type === "job_seeker" ? "applicant" : user?.user_type})
               </span>
               <button
                 onClick={() => auth.logout()}
@@ -131,25 +131,29 @@ export default function Dashboard() {
             <p className="text-gray-600">No resumes uploaded yet</p>
           ) : (
             <div className="space-y-4">
-              {resumes.slice(0, 5).map((resume: any) => (
-                <div key={resume.id} className="flex items-center justify-between p-4 border rounded">
-                  <div className="flex items-center">
-                    <FileText className="w-5 h-5 text-gray-400 mr-3" />
-                    <div>
-                      <p className="font-medium">{resume.filename}</p>
-                      <p className="text-sm text-gray-600">
-                        Uploaded {new Date(resume.uploaded_at).toLocaleDateString()}
-                      </p>
+              {resumes
+                .slice() // shallow copy so original array isn’t mutated
+                .sort((a: any, b: any) => new Date(b.uploaded_at).getTime() - new Date(a.uploaded_at).getTime())
+                .slice(0, 5)
+                .map((resume: any) => (
+                  <div key={resume.id} className="flex items-center justify-between p-4 border rounded">
+                    <div className="flex items-center">
+                      <FileText className="w-5 h-5 text-gray-400 mr-3" />
+                      <div>
+                        <p className="font-medium">{resume.filename}</p>
+                        <p className="text-sm text-gray-600">
+                          Uploaded {new Date(resume.uploaded_at).toLocaleDateString()}
+                        </p>
+                      </div>
                     </div>
+                    <Link
+                      href={`/dashboard/resumes/${resume.id}`}
+                      className="text-indigo-600 hover:text-indigo-800"
+                    >
+                      View Analysis
+                    </Link>
                   </div>
-                  <Link
-                    href={`/dashboard/resumes/${resume.id}`}
-                    className="text-indigo-600 hover:text-indigo-800"
-                  >
-                    View Analysis
-                  </Link>
-                </div>
-              ))}
+                ))}
             </div>
           )}
         </div>
